@@ -38,9 +38,11 @@ namespace EduMatch.PresentationLayer.Controllers
             var users = await _userService.GetAllUsers();
             if (users == null || !users.Any())
                 return Ok(ApiResponse<IEnumerable<ManageUserDto>>.Fail("Danh sách người dùng rỗng."));
-            
-            return Ok(ApiResponse<object>.Ok(users, "Lấy danh sách người dùng thành công."));
-        }
+
+			Console.WriteLine(users.Count());
+			return Ok(ApiResponse<object>.Ok(users, "Lấy danh sách người dùng thành công."));
+            Console.WriteLine(users.Count());
+		}
 
         [HttpPut("users/{email}/deactivate")]
         public async Task<IActionResult> DeactivateUser(string email)
